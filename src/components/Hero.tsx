@@ -12,12 +12,12 @@ export default function Hero() {
       dir={dir}
     >
       {/* Background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-indigo-50 via-white to-purple-50" />
-      <div className="absolute top-20 right-10 w-72 h-72 bg-indigo-200 rounded-full opacity-20 blur-3xl" />
-      <div className="absolute bottom-20 left-10 w-96 h-96 bg-purple-200 rounded-full opacity-20 blur-3xl" />
+      <div className="absolute inset-0 bg-gradient-to-br from-white via-white to-[#F5FEFF]" />
+      <div className="absolute top-20 right-10 w-72 h-72 bg-[#35DCE7] rounded-full opacity-20 blur-3xl" />
+      <div className="absolute bottom-20 left-10 w-96 h-96 bg-[#35DCE7] rounded-full opacity-20 blur-3xl" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 text-center">
-        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-100 text-indigo-700 text-sm font-medium mb-8">
+        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#E9FDFF] text-[#12B8C4] text-sm font-medium mb-8">
           <Sparkles size={14} />
           {lang === "en" ? siteConfig.tagline : siteConfig.taglineAr}
         </div>
@@ -33,14 +33,14 @@ export default function Hero() {
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
           <a
             href="#audit"
-            className="inline-flex items-center gap-2 px-8 py-4 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl font-semibold text-lg transition-all hover:shadow-lg hover:shadow-indigo-200"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-[#050505] hover:bg-[#12B8C4] text-white rounded-xl font-semibold text-lg transition-all hover:shadow-lg hover:shadow-[#35DCE7]/30"
           >
             {t.hero.cta}
             <ArrowRight size={20} className={dir === "rtl" ? "rotate-180" : ""} />
           </a>
           <a
             href="#services"
-            className="inline-flex items-center gap-2 px-8 py-4 border-2 border-gray-300 hover:border-indigo-400 text-gray-700 hover:text-indigo-600 rounded-xl font-semibold text-lg transition-all"
+            className="inline-flex items-center gap-2 px-8 py-4 border-2 border-[#BDEFF3] hover:border-[#35DCE7] text-[#111111] hover:text-[#12B8C4] rounded-xl font-semibold text-lg transition-all"
           >
             {t.hero.ctaSecondary}
           </a>
