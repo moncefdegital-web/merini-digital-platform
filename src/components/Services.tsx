@@ -29,9 +29,9 @@ export default function Services() {
           {t.services.items.map((service, index) => (
             <div
               key={index}
-              className="group p-8 rounded-2xl border border-gray-100 hover:border-indigo-200 hover:shadow-xl transition-all duration-300 bg-white"
+              className="group p-8 rounded-2xl border border-gray-100 hover:border-[#BDEFF3] hover:shadow-xl transition-all duration-300 bg-white"
             >
-              <div className="w-14 h-14 rounded-xl bg-indigo-100 text-indigo-600 flex items-center justify-center mb-6 group-hover:bg-indigo-600 group-hover:text-white transition-colors">
+              <div className="w-14 h-14 rounded-xl bg-[#E9FDFF] text-[#12B8C4] flex items-center justify-center mb-6 group-hover:bg-[#35DCE7] group-hover:text-[#050505] transition-colors">
                 {iconMap[service.icon]}
               </div>
               <h3 className="text-xl font-bold text-gray-900 mb-3">
