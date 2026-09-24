@@ -20,7 +20,8 @@ export default function AuditForm() {
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
-    // In production, this would submit to the backend/Supabase
+    const body = Object.entries(formData).map(([key, value]) => `${key}: ${value || "Not provided"}`).join("\n");
+    window.location.href = `mailto:merinidegital@gmail.com?subject=Free%20Digital%20Audit%20Request&body=${encodeURIComponent(body)}`;
     setSubmitted(true);
   };
 
@@ -63,7 +64,7 @@ export default function AuditForm() {
                 value={formData.name}
                 onChange={handleChange}
                 placeholder={t.audit.placeholders.name}
-                className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 transition-all outline-none"
+                className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[#35DCE7] focus:ring-2 focus:ring-[#35DCE7] transition-all outline-none"
               />
             </div>
             <div>
@@ -77,7 +78,7 @@ export default function AuditForm() {
                 value={formData.email}
                 onChange={handleChange}
                 placeholder={t.audit.placeholders.email}
-                className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 transition-all outline-none"
+                className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[#35DCE7] focus:ring-2 focus:ring-[#35DCE7] transition-all outline-none"
               />
             </div>
             <div>
@@ -91,7 +92,7 @@ export default function AuditForm() {
                 value={formData.phone}
                 onChange={handleChange}
                 placeholder={t.audit.placeholders.phone}
-                className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 transition-all outline-none"
+                className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[#35DCE7] focus:ring-2 focus:ring-[#35DCE7] transition-all outline-none"
               />
             </div>
             <div>
@@ -104,7 +105,7 @@ export default function AuditForm() {
                 value={formData.website}
                 onChange={handleChange}
                 placeholder={t.audit.placeholders.website}
-                className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 transition-all outline-none"
+                className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[#35DCE7] focus:ring-2 focus:ring-[#35DCE7] transition-all outline-none"
               />
             </div>
             <div className="sm:col-span-2">
@@ -118,7 +119,7 @@ export default function AuditForm() {
                 value={formData.business}
                 onChange={handleChange}
                 placeholder={t.audit.placeholders.business}
-                className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 transition-all outline-none"
+                className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[#35DCE7] focus:ring-2 focus:ring-[#35DCE7] transition-all outline-none"
               />
             </div>
             <div className="sm:col-span-2">
@@ -131,14 +132,14 @@ export default function AuditForm() {
                 value={formData.message}
                 onChange={handleChange}
                 placeholder={t.audit.placeholders.message}
-                className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 transition-all outline-none resize-none"
+                className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[#35DCE7] focus:ring-2 focus:ring-[#35DCE7] transition-all outline-none resize-none"
               />
             </div>
           </div>
 
           <button
             type="submit"
-            className="mt-8 w-full inline-flex items-center justify-center gap-2 px-8 py-4 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl font-semibold text-lg transition-all hover:shadow-lg"
+            className="mt-8 w-full inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#050505] hover:bg-[#12B8C4] text-white rounded-xl font-semibold text-lg transition-all hover:shadow-lg"
           >
             <Send size={20} />
             {t.audit.submit}
