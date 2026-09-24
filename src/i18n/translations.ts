@@ -125,6 +125,23 @@ export const translations = {
       text: "Chat with us",
     },
   },
+  fr: {
+  nav: { home:"Accueil", services:"Services", about:"À propos", audit:"Audit gratuit", contact:"Contact" },
+  hero: { headline:"Des expériences numériques conçues pour rendre votre entreprise détectable, digne de confiance et joignable.", subheadline:"Des sites modernes optimisés pour le référencement local, pensés pour les entreprises au Maroc et à l'international.", cta:"Audit digital gratuit", ctaSecondary:"Découvrir nos services" },
+  services: { title:"Ce que nous créons", subtitle:"Des systèmes digitaux pensés pour la clarté, la performance et les besoins réels de votre activité.", items:[
+    {title:"Création Web",description:"Des sites rapides et responsifs pensés autour de vos objectifs.",icon:"code"},
+    {title:"SEO Technique",description:"Des bases techniques solides pour améliorer votre visibilité.",icon:"chart"},
+    {title:"Systèmes Multilingues",description:"Des expériences claires pour vos publics locaux et internationaux.",icon:"globe"},
+    {title:"Expérience Mobile",description:"Une expérience soignée sur mobile, tablette et ordinateur.",icon:"mobile"},
+    {title:"Stratégie Digitale",description:"Une feuille de route concrète pour renforcer votre présence en ligne.",icon:"trending"},
+    {title:"Accompagnement",description:"Des améliorations et un accompagnement fiables après la mise en ligne.",icon:"shield"}
+  ]},
+  about:{title:"Une présence digitale claire commence par de bonnes bases.",subtitle:"Simple, rapide et utile.",description:"Merini Digital combine design web soigné, SEO technique et approche multilingue pour aider les entreprises à mieux se présenter en ligne.",stats:[{value:"Web",label:"Créations orientées performance"},{value:"SEO",label:"Fondations techniques"},{value:"4×",label:"Systèmes prêts pour le multilingue"}]},
+  audit:{title:"Obtenez votre audit digital gratuit",subtitle:"Présentez-nous votre activité et nous examinerons votre présence digitale. Votre demande s'ouvre directement dans votre email.",fields:{name:"Nom complet",email:"Adresse email",phone:"Téléphone / WhatsApp",website:"URL du site",business:"Nom de l'entreprise",message:"Que souhaitez-vous améliorer ?"},placeholders:{name:"Votre nom complet",email:"vous@email.com",phone:"+212 6XX XXX XXX",website:"https://votresite.com",business:"Nom de votre entreprise",message:"Dites-nous ce que vous souhaitez améliorer..."},submit:"Envoyer la demande par email",success:"Votre messagerie a été ouverte avec la demande d'audit.",errors:{required:"Ce champ est obligatoire",email:"Veuillez saisir un email valide"}},
+  contact:{title:"Parlons de votre projet",subtitle:"Un projet web, SEO ou digital en tête ? Contactez-nous directement.",email:"Nous écrire",whatsapp:"WhatsApp",phone:"Appeler",followUs:"Nous suivre"},
+  footer:{description:"Web, SEO et systèmes digitaux multilingues pour les entreprises qui veulent une présence en ligne claire.",quickLinks:"Liens rapides",contactUs:"Contact",rights:"© 2026 Merini Digital. Tous droits réservés."},
+  whatsapp:{text:"Nous écrire sur WhatsApp"}
+},
   ar: {
     // Navigation
     nav: {
