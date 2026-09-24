@@ -12,6 +12,7 @@ export default function AuditForm() {
     website: "",
     business: "",
     message: "",
+    websiteTrap: "",
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -20,6 +21,10 @@ export default function AuditForm() {
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
+
+    // Client-side honeypot: normal visitors never see or fill this field.
+    if (formData.websiteTrap.trim()) return;
+
     const body = Object.entries(formData).map(([key, value]) => `${key}: ${value || "Not provided"}`).join("\n");
     window.location.href = `mailto:merinidegital@gmail.com?subject=Free%20Digital%20Audit%20Request&body=${encodeURIComponent(body)}`;
     setSubmitted(true);
@@ -52,6 +57,22 @@ export default function AuditForm() {
           onSubmit={handleSubmit}
           className="p-8 sm:p-10 rounded-2xl bg-gray-50 border border-gray-200"
         >
+          <div
+            aria-hidden="true"
+            className="absolute -left-[9999px] top-auto h-px w-px overflow-hidden"
+          >
+            <label htmlFor="websiteTrap">Leave this field empty</label>
+            <input
+              id="websiteTrap"
+              type="text"
+              name="websiteTrap"
+              tabIndex={-1}
+              autoComplete="off"
+              value={formData.websiteTrap}
+              onChange={handleChange}
+            />
+          </div>
+
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
@@ -61,6 +82,7 @@ export default function AuditForm() {
                 type="text"
                 name="name"
                 required
+                maxLength={100}
                 value={formData.name}
                 onChange={handleChange}
                 placeholder={t.audit.placeholders.name}
@@ -75,6 +97,7 @@ export default function AuditForm() {
                 type="email"
                 name="email"
                 required
+                maxLength={254}
                 value={formData.email}
                 onChange={handleChange}
                 placeholder={t.audit.placeholders.email}
@@ -89,6 +112,7 @@ export default function AuditForm() {
                 type="tel"
                 name="phone"
                 required
+                maxLength={30}
                 value={formData.phone}
                 onChange={handleChange}
                 placeholder={t.audit.placeholders.phone}
@@ -102,6 +126,7 @@ export default function AuditForm() {
               <input
                 type="url"
                 name="website"
+                maxLength={2048}
                 value={formData.website}
                 onChange={handleChange}
                 placeholder={t.audit.placeholders.website}
@@ -116,6 +141,7 @@ export default function AuditForm() {
                 type="text"
                 name="business"
                 required
+                maxLength={150}
                 value={formData.business}
                 onChange={handleChange}
                 placeholder={t.audit.placeholders.business}
@@ -129,6 +155,7 @@ export default function AuditForm() {
               <textarea
                 name="message"
                 rows={4}
+                maxLength={2000}
                 value={formData.message}
                 onChange={handleChange}
                 placeholder={t.audit.placeholders.message}
