@@ -5,47 +5,25 @@ export default function About() {
   const { t, dir } = useLanguage();
 
   return (
-    <section id="about" className="py-20 bg-[#F5FEFF]" dir={dir}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          {/* Content */}
+    <section id="about" className="bg-[#F5FEFF] py-20" dir={dir}>
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 items-center gap-16 lg:grid-cols-2">
           <div>
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-              {t.about.title}
-            </h2>
-            <p className="text-lg text-[#12B8C4] font-medium mb-6">
-              {t.about.subtitle}
-            </p>
-            <p className="text-gray-600 leading-relaxed mb-8">
-              {t.about.description}
-            </p>
+            <h2 className="mb-4 text-3xl font-bold text-gray-900 sm:text-4xl">{t.about.title}</h2>
+            <p className="mb-6 text-lg font-medium text-[#12B8C4]">{t.about.subtitle}</p>
+            <p className="mb-8 leading-relaxed text-gray-600">{t.about.description}</p>
             <div className="flex flex-wrap gap-4">
-              <div className="flex items-center gap-2 text-gray-700">
-                <CheckCircle size={18} className="text-green-500" />
-                <span className="font-medium">SEO Optimized</span>
-              </div>
-              <div className="flex items-center gap-2 text-gray-700">
-                <CheckCircle size={18} className="text-green-500" />
-                <span className="font-medium">Mobile First</span>
-              </div>
-              <div className="flex items-center gap-2 text-gray-700">
-                <CheckCircle size={18} className="text-green-500" />
-                <span className="font-medium">24/7 Support</span>
-              </div>
+              <div className="flex items-center gap-2 text-gray-700"><CheckCircle size={18} className="text-[#12B8C4]" /><span className="font-medium">SEO Optimized</span></div>
+              <div className="flex items-center gap-2 text-gray-700"><CheckCircle size={18} className="text-[#12B8C4]" /><span className="font-medium">Mobile First</span></div>
+              <div className="flex items-center gap-2 text-gray-700"><CheckCircle size={18} className="text-[#12B8C4]" /><span className="font-medium">24/7 Support</span></div>
             </div>
           </div>
 
-          {/* Stats */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-1 gap-6">
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-3 lg:grid-cols-1">
             {t.about.stats.map((stat, index) => (
-              <div
-                key={index}
-                className="p-8 rounded-2xl bg-white shadow-md text-center"
-              >
-                <div className="text-4xl font-bold text-[#12B8C4] mb-2">
-                  {stat.value}
-                </div>
-                <div className="text-gray-600 font-medium">{stat.label}</div>
+              <div key={index} className="rounded-2xl bg-white p-8 text-center shadow-md">
+                <div className="mb-2 text-4xl font-bold text-[#12B8C4]">{stat.value}</div>
+                <div className="font-medium text-gray-600">{stat.label}</div>
               </div>
             ))}
           </div>
