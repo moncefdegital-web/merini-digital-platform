@@ -5,89 +5,48 @@ import { Mail, Phone, MessageCircle, Facebook, Instagram, Linkedin } from "lucid
 export default function Contact() {
   const { t, dir } = useLanguage();
 
+  const cards = [
+    { href: siteConfig.contact.emailLink, icon: Mail, title: t.contact.email, value: siteConfig.contact.email, accent: "cyan" },
+    { href: siteConfig.contact.whatsappLink, icon: MessageCircle, title: t.contact.whatsapp, value: siteConfig.contact.phone, accent: "green" },
+    { href: `tel:${siteConfig.contact.phone}`, icon: Phone, title: t.contact.phone, value: siteConfig.contact.phone, accent: "cyan" },
+  ];
+
   return (
-    <section id="contact" className="py-20 bg-gray-50" dir={dir}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-            {t.contact.title}
-          </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            {t.contact.subtitle}
-          </p>
+    <section id="contact" className="bg-white py-20" dir={dir}>
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="mb-16 text-center">
+          <h2 className="mb-4 text-3xl font-bold text-gray-900 sm:text-4xl">{t.contact.title}</h2>
+          <p className="mx-auto max-w-2xl text-lg text-gray-600">{t.contact.subtitle}</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto mb-16">
-          {/* Email */}
-          <a
-            href={siteConfig.contact.emailLink}
-            className="flex flex-col items-center p-8 rounded-2xl bg-white border border-gray-200 hover:border-indigo-300 hover:shadow-lg transition-all group"
-          >
-            <div className="w-14 h-14 rounded-xl bg-indigo-100 text-indigo-600 flex items-center justify-center mb-4 group-hover:bg-indigo-600 group-hover:text-white transition-colors">
-              <Mail size={24} />
-            </div>
-            <h3 className="font-bold text-gray-900 mb-1">{t.contact.email}</h3>
-            <p className="text-sm text-gray-500 break-all">{siteConfig.contact.email}</p>
-          </a>
-
-          {/* WhatsApp */}
-          <a
-            href={siteConfig.contact.whatsappLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex flex-col items-center p-8 rounded-2xl bg-white border border-gray-200 hover:border-green-300 hover:shadow-lg transition-all group"
-          >
-            <div className="w-14 h-14 rounded-xl bg-green-100 text-green-600 flex items-center justify-center mb-4 group-hover:bg-green-600 group-hover:text-white transition-colors">
-              <MessageCircle size={24} />
-            </div>
-            <h3 className="font-bold text-gray-900 mb-1">{t.contact.whatsapp}</h3>
-            <p className="text-sm text-gray-500">{siteConfig.contact.phone}</p>
-          </a>
-
-          {/* Phone */}
-          <a
-            href={`tel:${siteConfig.contact.phone}`}
-            className="flex flex-col items-center p-8 rounded-2xl bg-white border border-gray-200 hover:border-purple-300 hover:shadow-lg transition-all group"
-          >
-            <div className="w-14 h-14 rounded-xl bg-purple-100 text-purple-600 flex items-center justify-center mb-4 group-hover:bg-purple-600 group-hover:text-white transition-colors">
-              <Phone size={24} />
-            </div>
-            <h3 className="font-bold text-gray-900 mb-1">{t.contact.phone}</h3>
-            <p className="text-sm text-gray-500">{siteConfig.contact.phone}</p>
-          </a>
-        </div>
-
-        {/* Social Links */}
-        <div className="text-center">
-          <h3 className="text-lg font-semibold text-gray-700 mb-6">
-            {t.contact.followUs}
-          </h3>
-          <div className="flex items-center justify-center gap-4">
+        <div className="mx-auto mb-16 grid max-w-4xl grid-cols-1 gap-8 md:grid-cols-3">
+          {cards.map(({ href, icon: Icon, title, value, accent }) => (
             <a
-              href={siteConfig.social.facebook}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-12 h-12 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center hover:bg-blue-600 hover:text-white transition-colors"
-              aria-label="Facebook"
+              key={title}
+              href={href}
+              target={href.startsWith("http") ? "_blank" : undefined}
+              rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
+              className="group flex flex-col items-center rounded-2xl border border-gray-200 bg-white p-8 shadow-sm transition-all hover:-translate-y-1 hover:border-[#BDEFF3] hover:shadow-lg"
             >
+              <div className={`mb-4 flex h-14 w-14 items-center justify-center rounded-xl ${accent === "green" ? "bg-green-100 text-green-600 group-hover:bg-green-600" : "bg-[#E9FDFF] text-[#12B8C4] group-hover:bg-[#12B8C4]"} group-hover:text-white transition-colors`}>
+                <Icon size={24} />
+              </div>
+              <h3 className="mb-1 font-bold text-gray-900">{title}</h3>
+              <p className="break-all text-sm text-gray-500">{value}</p>
+            </a>
+          ))}
+        </div>
+
+        <div className="text-center">
+          <h3 className="mb-6 text-lg font-semibold text-gray-700">{t.contact.followUs}</h3>
+          <div className="flex items-center justify-center gap-4">
+            <a href={siteConfig.social.facebook} target="_blank" rel="noopener noreferrer" className="flex h-12 w-12 items-center justify-center rounded-full border border-gray-200 bg-white text-gray-700 transition-colors hover:border-[#35DCE7] hover:bg-[#35DCE7] hover:text-[#050505]" aria-label="Facebook">
               <Facebook size={20} />
             </a>
-            <a
-              href={siteConfig.social.instagram}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-12 h-12 rounded-full bg-pink-100 text-pink-600 flex items-center justify-center hover:bg-pink-600 hover:text-white transition-colors"
-              aria-label="Instagram"
-            >
+            <a href={siteConfig.social.instagram} target="_blank" rel="noopener noreferrer" className="flex h-12 w-12 items-center justify-center rounded-full border border-gray-200 bg-white text-gray-700 transition-colors hover:border-[#35DCE7] hover:bg-[#35DCE7] hover:text-[#050505]" aria-label="Instagram">
               <Instagram size={20} />
             </a>
-            <a
-              href={siteConfig.social.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-12 h-12 rounded-full bg-sky-100 text-sky-600 flex items-center justify-center hover:bg-sky-600 hover:text-white transition-colors"
-              aria-label="LinkedIn"
-            >
+            <a href={siteConfig.social.linkedin} target="_blank" rel="noopener noreferrer" className="flex h-12 w-12 items-center justify-center rounded-full border border-gray-200 bg-white text-gray-700 transition-colors hover:border-[#35DCE7] hover:bg-[#35DCE7] hover:text-[#050505]" aria-label="LinkedIn">
               <Linkedin size={20} />
             </a>
           </div>
