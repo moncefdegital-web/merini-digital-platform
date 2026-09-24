@@ -1,0 +1,51 @@
+import { useLanguage } from "../context/LanguageContext";
+import { siteConfig } from "../config/siteConfig";
+import { ArrowRight, Sparkles } from "lucide-react";
+
+export default function Hero() {
+  const { t, dir, lang } = useLanguage();
+
+  return (
+    <section
+      id="home"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      dir={dir}
+    >
+      {/* Background gradient */}
+      <div className="absolute inset-0 bg-gradient-to-br from-indigo-50 via-white to-purple-50" />
+      <div className="absolute top-20 right-10 w-72 h-72 bg-indigo-200 rounded-full opacity-20 blur-3xl" />
+      <div className="absolute bottom-20 left-10 w-96 h-96 bg-purple-200 rounded-full opacity-20 blur-3xl" />
+
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 text-center">
+        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-100 text-indigo-700 text-sm font-medium mb-8">
+          <Sparkles size={14} />
+          {lang === "en" ? siteConfig.tagline : siteConfig.taglineAr}
+        </div>
+
+        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 mb-6 leading-tight">
+          {t.hero.headline}
+        </h1>
+
+        <p className="text-lg sm:text-xl text-gray-600 max-w-3xl mx-auto mb-10">
+          {t.hero.subheadline}
+        </p>
+
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a
+            href="#audit"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl font-semibold text-lg transition-all hover:shadow-lg hover:shadow-indigo-200"
+          >
+            {t.hero.cta}
+            <ArrowRight size={20} className={dir === "rtl" ? "rotate-180" : ""} />
+          </a>
+          <a
+            href="#services"
+            className="inline-flex items-center gap-2 px-8 py-4 border-2 border-gray-300 hover:border-indigo-400 text-gray-700 hover:text-indigo-600 rounded-xl font-semibold text-lg transition-all"
+          >
+            {t.hero.ctaSecondary}
+          </a>
+        </div>
+      </div>
+    </section>
+  );
+}
