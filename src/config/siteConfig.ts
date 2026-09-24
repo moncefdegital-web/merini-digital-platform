@@ -3,8 +3,8 @@ export const siteConfig = {
   // Business identity
   businessName: "Merini Digital",
   businessNameAr: "ميريني ديجيتال",
-  tagline: "Digital Marketing & Web Solutions",
-  taglineAr: "حلول التسويق الرقمي والويب",
+  tagline: "Digital Studio · Web Design · Technical SEO · Multilingual Systems",
+  taglineAr: "استوديو رقمي · تصميم الويب · السيو التقني · الأنظمة متعددة اللغات",
 
   // Contact information
   contact: {
@@ -24,6 +24,8 @@ export const siteConfig = {
   },
 
   // SEO
+  logo: `${import.meta.env.BASE_URL}merini-digital-logo.svg`,
+
   description:
     "Merini Digital — Your partner for digital marketing, web development, and brand growth. We help businesses thrive online.",
   descriptionAr:
