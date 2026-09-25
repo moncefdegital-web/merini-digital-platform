@@ -35,7 +35,7 @@ export default function Header() {
             <img
               src={siteConfig.logo}
               alt="Merini Digital"
-              className="h-14 w-[190px] object-contain object-left"
+              className="h-14 w-[220px] object-contain object-left sm:h-16 sm:w-[245px]"
             />
           </a>
 
