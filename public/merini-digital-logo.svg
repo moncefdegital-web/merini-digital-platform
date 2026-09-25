@@ -1,1 +1,24 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="70 55 770 590" role="img" aria-labelledby="title"><title>MERINI DIGITAL</title><g fill="#050505"><path d="M145 80h54v177l78 78V80h54v326h-54V411l-78-78v73h-54z"/><path d="M355 80h86c92 0 166 70 166 163s-74 163-166 163h-86V80zm54 54v218h32c61 0 112-45 112-109S502 134 441 134h-32z"/></g><path d="M300 250l150-150 36 36-150 150z" fill="#35DCE7"/><text x="90" y="525" fill="#050505" font-family="Arial,Helvetica,sans-serif" font-weight="800" font-size="102">MERINI</text><text x="300" y="620" fill="#050505" font-family="Arial,Helvetica,sans-serif" font-size="62" letter-spacing="28">DIGITAL</text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 430" role="img" aria-labelledby="title desc">
+  <title id="title">MERINI DIGITAL</title>
+  <desc id="desc">MERINI DIGITAL monogram with a cyan lightning mark.</desc>
+  <defs>
+    <linearGradient id="dark" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#111111"/>
+      <stop offset="0.55" stop-color="#050505"/>
+      <stop offset="1" stop-color="#2A2A2A"/>
+    </linearGradient>
+    <linearGradient id="cyan" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#12B8C4"/>
+      <stop offset="0.55" stop-color="#35DCE7"/>
+      <stop offset="1" stop-color="#14B8D4"/>
+    </linearGradient>
+  </defs>
+  <g fill="url(#dark)">
+    <path d="M105 42h64l92 128 92-128h64v220h-64V145l-92 125-92-125v117h-64z"/>
+    <path d="M420 42h83c72 0 126 45 126 110s-54 110-126 110h-83zm64 57v106h19c37 0 63-20 63-53s-26-53-63-53z"/>
+  </g>
+  <path d="M405 18 318 177h43l-67 128 117-172h-43z" fill="url(#cyan)"/>
+  <path d="M405 18 388 74" fill="none" stroke="#67F0F5" stroke-width="5" stroke-linecap="round" opacity=".7"/>
+  <text x="360" y="345" text-anchor="middle" fill="#050505" font-family="Arial, Helvetica, sans-serif" font-size="76" font-weight="800" letter-spacing="3">MERINI</text>
+  <text x="360" y="398" text-anchor="middle" fill="#050505" font-family="Arial, Helvetica, sans-serif" font-size="38" font-weight="500" letter-spacing="18">DIGITAL</text>
+</svg>
