@@ -16,27 +16,47 @@ export default function AuditForm() {
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    setFormData((current) => ({ ...current, [e.target.name]: e.target.value }));
   };
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
 
-    // Client-side honeypot: normal visitors never see or fill this field.
     if (formData.websiteTrap.trim()) return;
 
-    const body = Object.entries(formData).map(([key, value]) => `${key}: ${value || "Not provided"}`).join("\n");
-    window.location.href = `mailto:merinidegital@gmail.com?subject=Free%20Digital%20Audit%20Request&body=${encodeURIComponent(body)}`;
+    const fields = [
+      ["name", formData.name],
+      ["email", formData.email],
+      ["phone", formData.phone],
+      ["website", formData.website],
+      ["business", formData.business],
+      ["message", formData.message],
+    ];
+
+    const body = fields
+      .map(([key, value]) => key + ": " + (value || "Not provided"))
+      .join("\\n");
+
+    const subject = encodeURIComponent(
+      formData.business ? "Free Digital Audit — " + formData.business : "Free Digital Audit Request"
+    );
+
+    window.location.href =
+      "mailto:merinidegital@gmail.com?subject=" +
+      subject +
+      "&body=" +
+      encodeURIComponent(body);
+
     setSubmitted(true);
   };
 
   if (submitted) {
     return (
-      <section id="audit" className="py-20 bg-white" dir={dir}>
-        <div className="max-w-2xl mx-auto px-4 text-center">
-          <div className="p-12 rounded-2xl bg-green-50 border border-green-200">
-            <CheckCircle size={48} className="text-green-500 mx-auto mb-4" />
-            <p className="text-xl text-green-700 font-medium">{t.audit.success}</p>
+      <section id="audit" className="bg-white py-20" dir={dir}>
+        <div className="mx-auto max-w-2xl px-4 text-center">
+          <div className="rounded-2xl border border-green-200 bg-green-50 p-12">
+            <CheckCircle size={48} className="mx-auto mb-4 text-green-500" />
+            <p className="text-xl font-medium text-green-700">{t.audit.success}</p>
           </div>
         </div>
       </section>
@@ -44,23 +64,15 @@ export default function AuditForm() {
   }
 
   return (
-    <section id="audit" className="py-20 bg-white" dir={dir}>
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-            {t.audit.title}
-          </h2>
+    <section id="audit" className="bg-white py-20" dir={dir}>
+      <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
+        <div className="mb-12 text-center">
+          <h2 className="mb-4 text-3xl font-bold text-gray-900 sm:text-4xl">{t.audit.title}</h2>
           <p className="text-lg text-gray-600">{t.audit.subtitle}</p>
         </div>
 
-        <form
-          onSubmit={handleSubmit}
-          className="p-8 sm:p-10 rounded-2xl bg-gray-50 border border-gray-200"
-        >
-          <div
-            aria-hidden="true"
-            className="absolute -left-[9999px] top-auto h-px w-px overflow-hidden"
-          >
+        <form onSubmit={handleSubmit} className="rounded-2xl border border-gray-200 bg-gray-50 p-8 sm:p-10">
+          <div aria-hidden="true" className="absolute -left-[9999px] top-auto h-px w-px overflow-hidden">
             <label htmlFor="websiteTrap">Leave this field empty</label>
             <input
               id="websiteTrap"
@@ -73,11 +85,9 @@ export default function AuditForm() {
             />
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
-                {t.audit.fields.name} *
-              </label>
+              <label className="mb-2 block text-sm font-medium text-gray-700">{t.audit.fields.name} *</label>
               <input
                 type="text"
                 name="name"
@@ -86,13 +96,12 @@ export default function AuditForm() {
                 value={formData.name}
                 onChange={handleChange}
                 placeholder={t.audit.placeholders.name}
-                className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[#35DCE7] focus:ring-2 focus:ring-[#35DCE7] transition-all outline-none"
+                className="w-full rounded-lg border border-gray-300 px-4 py-3 outline-none transition-all focus:border-[#35DCE7] focus:ring-2 focus:ring-[#35DCE7]"
               />
             </div>
+
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
-                {t.audit.fields.email} *
-              </label>
+              <label className="mb-2 block text-sm font-medium text-gray-700">{t.audit.fields.email} *</label>
               <input
                 type="email"
                 name="email"
@@ -101,13 +110,12 @@ export default function AuditForm() {
                 value={formData.email}
                 onChange={handleChange}
                 placeholder={t.audit.placeholders.email}
-                className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[#35DCE7] focus:ring-2 focus:ring-[#35DCE7] transition-all outline-none"
+                className="w-full rounded-lg border border-gray-300 px-4 py-3 outline-none transition-all focus:border-[#35DCE7] focus:ring-2 focus:ring-[#35DCE7]"
               />
             </div>
+
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
-                {t.audit.fields.phone} *
-              </label>
+              <label className="mb-2 block text-sm font-medium text-gray-700">{t.audit.fields.phone} *</label>
               <input
                 type="tel"
                 name="phone"
@@ -116,13 +124,12 @@ export default function AuditForm() {
                 value={formData.phone}
                 onChange={handleChange}
                 placeholder={t.audit.placeholders.phone}
-                className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[#35DCE7] focus:ring-2 focus:ring-[#35DCE7] transition-all outline-none"
+                className="w-full rounded-lg border border-gray-300 px-4 py-3 outline-none transition-all focus:border-[#35DCE7] focus:ring-2 focus:ring-[#35DCE7]"
               />
             </div>
+
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
-                {t.audit.fields.website}
-              </label>
+              <label className="mb-2 block text-sm font-medium text-gray-700">{t.audit.fields.website}</label>
               <input
                 type="url"
                 name="website"
@@ -130,13 +137,12 @@ export default function AuditForm() {
                 value={formData.website}
                 onChange={handleChange}
                 placeholder={t.audit.placeholders.website}
-                className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[#35DCE7] focus:ring-2 focus:ring-[#35DCE7] transition-all outline-none"
+                className="w-full rounded-lg border border-gray-300 px-4 py-3 outline-none transition-all focus:border-[#35DCE7] focus:ring-2 focus:ring-[#35DCE7]"
               />
             </div>
+
             <div className="sm:col-span-2">
-              <label className="block text-sm font-medium text-gray-700 mb-2">
-                {t.audit.fields.business} *
-              </label>
+              <label className="mb-2 block text-sm font-medium text-gray-700">{t.audit.fields.business} *</label>
               <input
                 type="text"
                 name="business"
@@ -145,13 +151,12 @@ export default function AuditForm() {
                 value={formData.business}
                 onChange={handleChange}
                 placeholder={t.audit.placeholders.business}
-                className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[#35DCE7] focus:ring-2 focus:ring-[#35DCE7] transition-all outline-none"
+                className="w-full rounded-lg border border-gray-300 px-4 py-3 outline-none transition-all focus:border-[#35DCE7] focus:ring-2 focus:ring-[#35DCE7]"
               />
             </div>
+
             <div className="sm:col-span-2">
-              <label className="block text-sm font-medium text-gray-700 mb-2">
-                {t.audit.fields.message}
-              </label>
+              <label className="mb-2 block text-sm font-medium text-gray-700">{t.audit.fields.message}</label>
               <textarea
                 name="message"
                 rows={4}
@@ -159,14 +164,14 @@ export default function AuditForm() {
                 value={formData.message}
                 onChange={handleChange}
                 placeholder={t.audit.placeholders.message}
-                className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-[#35DCE7] focus:ring-2 focus:ring-[#35DCE7] transition-all outline-none resize-none"
+                className="w-full resize-none rounded-lg border border-gray-300 px-4 py-3 outline-none transition-all focus:border-[#35DCE7] focus:ring-2 focus:ring-[#35DCE7]"
               />
             </div>
           </div>
 
           <button
             type="submit"
-            className="mt-8 w-full inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#050505] hover:bg-[#12B8C4] text-white rounded-xl font-semibold text-lg transition-all hover:shadow-lg"
+            className="mt-8 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#050505] px-8 py-4 text-lg font-semibold text-white transition-all hover:bg-[#12B8C4] hover:shadow-lg"
           >
             <Send size={20} />
             {t.audit.submit}
